@@ -1,9 +1,11 @@
 var express = require('express');
 var app = express();
-var passport = require('passport');
+
+// Pull in the public directory
+app.use('/public', express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
-  res.send('Hello World');
+  res.render("login.ejs");
 });
 
 var server = app.listen(3000, function() {
