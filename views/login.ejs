@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap Admin</title>
+    <title>goat.js</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -14,7 +14,7 @@
 
     <!-- For sample logo only-->
     <!--Remove if you no longer need this font-->
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Aguafina+Script">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Aguafina+Script">
     <!--For sample logo only-->
 
 
@@ -36,11 +36,11 @@
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/public/images/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/images/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/public/images/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/public/images/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/public/images/apple-touch-icon-57-precomposed.png">
   </head>
 
   <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
@@ -59,17 +59,14 @@
             <div class="block-header">
                 <h2>Sign In</h2>
             </div>
-            <form>
+            <form action="/authenticate" method="post">
                 <label>Username</label>
                 <input type="text" class="span12">
                 <a class="reset-password" href="reset-password.html">Forgot your password?</a>
                 <label>Password</label>
                 <input type="password" class="span12">
                 <div class="form-actions">
-                    <a href="index.html" class="btn btn-success pull-right">Sign In</a>
-                    <!--You can have a remember me or sign up here-->
-                    <!--<label class="remember-me"><input type="checkbox"> Remember me</label>-->
-                    <!--<a href="sign-up.html" class="sign-up">Sign Up</a>-->
+                    <button class="btn btn-success pull-right">Sign In</button>
                     <div class="clearfix"></div>
                 </div>
             </form>

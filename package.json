@@ -5,10 +5,12 @@
   "private": true,
   "dependencies": {
     "express": "3.x",
-	"ejs": "1.x",
-	"jake": "0.7.15",
-	"jake": "latest",
-	"node-gyp": "latest",
-	"mysql" : "latest"
+    "ejs": "1.x",
+    "jake": "latest",
+    "node-gyp": "latest",
+    "sequelize": "~1.7.8",
+    "mysql": "~2.3.2",
+	"lodash" : "latest"
+
   }
 }
