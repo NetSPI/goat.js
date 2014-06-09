@@ -1,6 +1,9 @@
 var db = require('../models')
 
-exports.authenticate = function(req, res){
-	 res.send("test")
-	//res.send(req.body.username);
-}
+exports.signUp = function(req, res) {
+    res.render("signup.ejs");
+};
+
+exports.register = function(req, res){
+	
+};

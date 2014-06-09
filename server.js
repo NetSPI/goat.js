@@ -36,12 +36,14 @@ if ('development' === app.get('env')) {
 app.get('/', routes.index)
 app.get('/test', test.works)
 app.post('/authenticate',
-passport.authenticate('local', { 
-		successRedirect: '/test',
-    	failureRedirect: '/',
-    	failureFlash: true 
-	})
+	passport.authenticate('local', { 
+			successRedirect: '/test',
+	    	failureRedirect: '/',
+	    	failureFlash: true 
+		})
 )
+app.get('/signup', user.signUp)
+app.post('/register', user.register)
 
 db
   .sequelize
@@ -57,4 +59,4 @@ db
   })
 
 
-//db.User.build({ username: "admin", password: "bolognese" });
+var a = db.User.create({ username: "admin", password: "bolognese" });
