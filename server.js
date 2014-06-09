@@ -36,17 +36,16 @@ if ('development' === app.get('env')) {
 app.get('/', routes.index)
 app.get('/test', test.works)
 app.post('/authenticate',
-passport.authenticate('local', { successRedirect: '/test',
-                                   failureRedirect: '/',
-                                   failureFlash: true })
+passport.authenticate('local', { 
+		successRedirect: '/test',
+    	failureRedirect: '/',
+    	failureFlash: true 
+	})
 )
-
-
-
 
 db
   .sequelize
-  .sync({ force: true })
+  .sync()
   .complete(function(err) {
     if (err) {
       throw err[0]
@@ -56,3 +55,6 @@ db
       })
     }
   })
+
+
+//db.User.build({ username: "admin", password: "bolognese" });
