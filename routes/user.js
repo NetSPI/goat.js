@@ -7,10 +7,13 @@ exports.signUp = function(req, res) {
 exports.register = function(req, res){
 	db.User.find({where: {username: req.username}}).success(function (user){
 		if (!user) {
-			db.User.create({ username: req.body.username, password: req.body.password });
+			db.User.create({ username: req.body.username, password: req.body.password }).error(function(err){
+				console.log(err);
+				res.redirect('/test') 
+			});
 		} else {
-			console.log("wtf!!!!!!!")
+			res.redirect('/signup') 
 		}
 	})
-	res.send("Good to go")
+	res.redirect('/') 
 };
