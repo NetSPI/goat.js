@@ -59,4 +59,10 @@ db
   })
 
 
-var a = db.User.create({ username: "admin", password: "bolognese" });
+// Honestly, I might need to see if I can move this to a seed file and create a jake seed task
+db.User.find({where: { username: 'admin'} }).success(function (user) {
+	if (!user) {
+ 		db.User.create({ username: "admin", password: "bolognese" });
+ 	};
+});
+
