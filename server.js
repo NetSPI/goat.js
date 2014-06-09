@@ -38,8 +38,7 @@ app.get('/test', test.works)
 app.post('/authenticate',
 	passport.authenticate('local', { 
 			successRedirect: '/test',
-	    	failureRedirect: '/',
-	    	failureFlash: true 
+	    	failureRedirect: '/'
 		})
 )
 app.get('/signup', user.signUp)
@@ -62,7 +61,6 @@ db
 // Honestly, I might need to see if I can move this to a seed file and create a jake seed task
 db.User.find({where: { username: 'admin'} }).success(function (user) {
 	if (!user) {
- 		db.User.create({ username: "admin", password: "bolognese" });
+ 		db.User.create({ username: "admin", password: "admin" });
  	};
 });
-

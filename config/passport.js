@@ -5,11 +5,11 @@ var db = require('../models')
 
 // Serialize sessions
 passport.serializeUser(function(user, done) {
-  done(null, 1);
+  done(null, user);
 });
 
 passport.deserializeUser(function(user, done) {
-  db.User.find(1).success(function(user){
+  db.User.find({where: {id: user.id}}).success(function(user){
     done(null, user);
   }).error(function(err){
     done(err, null);
