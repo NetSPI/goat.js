@@ -1,6 +1,6 @@
 var db = require('../models')
 
-exports.authenticate = function(req, res){
-	 res.send("test")
+exports.works = function(req, res){
+	 res.send("it works!")
 	//res.send(req.body.username);
 }

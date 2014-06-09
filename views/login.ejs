@@ -61,14 +61,14 @@
             </div>
             <form action="/authenticate" method="post">
                 <label>Username</label>
-                <input type="text" class="span12">
+                <input  id="username" name="username" placeholder="Username" type="text"  class="span12"/>
                 <a class="reset-password" href="reset-password.html">Forgot your password?</a>
                 <label>Password</label>
-                <input type="password" class="span12">
+                <input id="password" name="password" placeholder="Password" type="password" class="span12">
                 <div class="form-actions">
-                    <button class="btn btn-success pull-right">Sign In</button>
-                    <div class="clearfix"></div>
-                </div>
+	                <button type="submit" class="btn btn-success pull-right">Sign In</button>
+	                <div class="clearfix"></div>
+	            </div>
             </form>
         </div>
     </div>

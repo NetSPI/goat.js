@@ -10,7 +10,11 @@
     "node-gyp": "latest",
     "sequelize": "~1.7.8",
     "mysql": "~2.3.2",
-	"lodash" : "latest"
-
+	"lodash" : "latest",
+	"passport" : "latest",
+	"passport-local" : "latest",
+	"password" : "latest",
+	"bcrypt-nodejs" : "latest" 		
+	 
   }
 }
