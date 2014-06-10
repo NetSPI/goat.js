@@ -12,10 +12,18 @@ module.exports = function(sequelize, DataTypes) {
   {
 	// Begin class methods
 	classMethods: {
-    	
+    	hashPassword: function(password){
+			return password
+		}
 	} // End of Class methods definition
   }
 )
+
+User.hook('beforeValidate', function(user, fn) {
+  user.password = "yoyoyo"  
+  fn(null, user)
+})
+
 
  //var user = User.create({ id: 1, username: "admin", password: "bolognese" }).save;
   return User
