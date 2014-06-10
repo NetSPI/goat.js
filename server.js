@@ -15,6 +15,8 @@ app.use('/public', express.static(__dirname + '/public'));
 // Set Views folder
 app.set('views', __dirname + '/views')
 
+// Configuration for BCrypt Salt Work Factor
+SALT_WORK_FACTOR = 12
 
 // configuration
 app.set('port', process.env.PORT || 3003)
