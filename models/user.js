@@ -7,18 +7,27 @@ module.exports = function(sequelize, DataTypes) {
     username: {type: DataTypes.STRING, unique: true, validate: { notNull: true, notEmpty: true}},
 	password: {type: DataTypes.STRING, validate: { notNull: true, notEmpty: true}}
   },
+  { 
+	//define: {
+		// Begin class methods
+		classMethods: {
+    		validPassword: function(password, passwd, done, user){
+			  bcrypt.compare(password, passwd, function(err, isMatch) {
+				  if (err) console.log(err)
+				  if (isMatch) {
+					return done(null, user ) 
+				  } else {
+					return done(null, false)
+				  }
+			  });
+			}
+		} // End of Class methods definition
+	}, // end of define:
   {
 	  dialect: 'mysql'
-  },
-  {
-	// Begin class methods
-	classMethods: {
-    	hashPassword: function(password){
-			return password
-		}
-	} // End of Class methods definition
   }
-)
+  
+);
 
 User.hook('beforeCreate', function(user, fn) {
   //user.password = "yoyoyo"  
