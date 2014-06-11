@@ -8,6 +8,7 @@ var express = require('express')
 	, test = require('./routes/test')
 	, passportConfig = require('./config/passport')
 	, home = require('./routes/home')
+	, application = require('./routes/application')
 
 
 // Pull in the public directory
@@ -34,10 +35,9 @@ if ('development' === app.get('env')) {
   app.use(express.errorHandler())
 }
 
-
 //routes 
 app.get('/', routes.index)
-app.get('/home', home.homepage)
+app.get('/home', application.IsAuthenticated, home.homepage)
 app.post('/authenticate',
 	passport.authenticate('local', { 
 			successRedirect: '/home',
