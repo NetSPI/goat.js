@@ -5,3 +5,8 @@ exports.IsAuthenticated = function(req,res,next){
         next(new Error(401));
     }
 }
+
+exports.destroySession = function(req, res, next) {
+  req.logOut();
+  res.redirect("/");
+};

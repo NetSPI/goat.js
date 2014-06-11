@@ -44,6 +44,7 @@ app.post('/authenticate',
 	    	failureRedirect: '/'
 		})
 )
+app.get('/logout', application.destroySession)
 app.get('/signup', user.signUp)
 app.post('/register', user.register)
 
