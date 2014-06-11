@@ -8,5 +8,6 @@ exports.IsAuthenticated = function(req,res,next){
 
 exports.destroySession = function(req, res, next) {
   req.logOut();
+  req.session.destroy()
   res.redirect("/");
 };
