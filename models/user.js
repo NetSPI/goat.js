@@ -24,12 +24,10 @@ User.hook('beforeCreate', function(user, fn) {
   //user.password = "yoyoyo"  
   var salt = bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
        return salt
-  });
-
-   bcrypt.hash("test", salt, null, function(err, hash) {
+  });	
+   bcrypt.hash(user.password, salt, null, function(err, hash) {
         if(err) return next(err);
          user.password = hash;
-	   	//fn(null, user)
 	   	 return fn(null, user)
    });
  

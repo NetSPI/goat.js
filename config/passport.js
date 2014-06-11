@@ -2,6 +2,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user')
 var db = require('../models')
+var bcrypt = require('bcrypt-nodejs')
 
 // Serialize sessions
 passport.serializeUser(function(user, done) {
@@ -19,30 +20,18 @@ passport.deserializeUser(function(user, done) {
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-	console.log("Before")
+	console.log(password)
     db.User.find({where: {username: username}}).success(function (user){
-		if (user && user.password == password) {
-			return done(null, user);
-		} else {
-		    return done(null, false);
-		}
+		passwd = user ? user.password : ''
+	    bcrypt.compare(password, passwd, function(err, isMatch) {
+	        if(err) return done(err);
+			console.log(isMatch)
+	        if (isMatch) {
+			  return done(null, user);
+			} else {
+			  return done(null, false);
+			}
+	    });
 	})
-	  console.log("After")
   }
 ));
-
-
-
-/*
-passport.use(new LocalStrategy(function(username, password, done) { 
-  // insert your MongoDB check here. For now, just a simple hardcoded check.
-  if (username === 'foo' && password === 'bar')
-  {
-    done(null, { user: 1 });
-  }
-  else
-  {
-    done(null, false);
-  }
-}));
-*/
