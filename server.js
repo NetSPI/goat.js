@@ -7,6 +7,7 @@ var express = require('express')
 	, passport = require('passport')
 	, test = require('./routes/test')
 	, passportConfig = require('./config/passport')
+	, home = require('./routes/home')
 
 
 // Pull in the public directory
@@ -36,10 +37,10 @@ if ('development' === app.get('env')) {
 
 //routes 
 app.get('/', routes.index)
-app.get('/test', test.works)
+app.get('/home', home.homepage)
 app.post('/authenticate',
 	passport.authenticate('local', { 
-			successRedirect: '/test',
+			successRedirect: '/home',
 	    	failureRedirect: '/'
 		})
 )
