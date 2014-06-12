@@ -54,7 +54,6 @@ db
     if (err) {
       throw err[0]
     } else {
-	  	// Honestly, I might need to see if I can move this to a seed file and create a jake seed task
 		db.User.find({where: { username: 'admin'} }).success(function (user) {
 			if (!user) {
 		 		db.User.build({ username: "admin", password: "admin" }).save();
