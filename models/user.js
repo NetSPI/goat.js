@@ -28,7 +28,18 @@ module.exports = function(sequelize, DataTypes) {
 );
 
 User.hook('beforeCreate', function(user, fn) {
-  //user.password = "yoyoyo"  
+  var salt = bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+       return salt
+  });	
+   bcrypt.hash(user.password, salt, null, function(err, hash) {
+        if(err) return next(err);
+         user.password = hash;
+	   	 return fn(null, user)
+   });
+ 
+})
+
+User.hook('beforeUpdate', function(user, fn) {
   var salt = bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
        return salt
   });	

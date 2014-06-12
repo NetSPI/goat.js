@@ -37,6 +37,8 @@ if ('development' === app.get('env')) {
 //routes 
 app.get('/', routes.index)
 app.get('/home', application.IsAuthenticated, home.homepage)
+app.get('/account', application.IsAuthenticated, home.account)
+app.post('/account/update', application.IsAuthenticated, user.update)
 app.post('/authenticate',
 	passport.authenticate('local', { 
 			successRedirect: '/home',

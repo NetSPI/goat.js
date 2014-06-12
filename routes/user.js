@@ -9,11 +9,24 @@ exports.register = function(req, res){
 		if (!user) {
 			db.User.create({ username: req.body.username, password: req.body.password }).error(function(err){
 				console.log(err);
-				res.redirect('/test') 
 			});
 		} else {
 			res.redirect('/signup') 
 		}
 	})
 	res.redirect('/') 
+};
+
+exports.update = function(req, res) {
+	var t = function(cb, user) {
+	   if (user) {
+		 req.user.password = req.body.new_password
+		 req.user.save()
+	   }
+	}
+	if (req.body.new_password = req.body.new_password_confirmation){
+		db.User.validPassword(req.body.current_password, req.user.password, t, req.user)
+	}
+  
+    res.redirect('/account')
 };

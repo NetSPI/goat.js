@@ -59,12 +59,12 @@
                     <li class="hidden-phone"><a href="#" role="button">Settings</a></li>
                     <li id="fat-menu" class="dropdown">
                         <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-user"></i> <%= myVar %>
+                            <i class="icon-user"></i> <%= username %>
                             <i class="icon-caret-down"></i>
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="/account">My Account</a></li>
+                            <li><a tabindex="-1" href="#">My Account</a></li>
                             <li class="divider"></li>
                             <li><a tabindex="-1" class="visible-phone" href="#">Settings</a></li>
                             <li class="divider visible-phone"></li>
@@ -86,20 +86,46 @@
       </ul>
     </div>
     <!-- End Sidebar-->
-
-  	<div class="content">
-      <div class="container-fluid">
-		<div class="span8 main-content">
-        	<div class="row-fluid">
-				<div class="row-fluid">
-		            <h2>Welcome!
-		                <span class="info">This is your dashboard</span>
-		            </h2>
-				</div>
-	      	</div>
+	<div class="content">
+        <div class="container-fluid">
+            <div class="row-fluid">
+				<h2>&nbsp;</h2>
+				<form action="/account/update" method="post" class="form-horizontal">
+					<div class="control-group">
+				     	<!-- Text input-->
+				     	<div class="controls">
+				     	  <input type="text" class="input-xlarge" value=<%= username %> disabled>
+				     	</div>
+				    </div>
+					<div class="control-group">
+				     	<!-- Text input-->
+				     	<div class="controls">
+				     	  <input  type="password" id="current_password" name="current_password"  class="input-xlarge" placeholder="Current Password">
+				     	</div>
+				    </div>
+					<div class="control-group">
+				     	<!-- Text input-->
+				     	<div class="controls">
+				     	  <input type="password" id="new_password" name="new_password" class="input-xlarge" placeholder="New Password">
+				     	</div>
+				    </div>
+					<div class="control-group">
+				     	<!-- Text input-->
+				     	<div class="controls">
+				     	  <input  type="password" id="new_password_confirmation" name="new_password_confirmation" class="input-xlarge" placeholder="Confirm New Password">
+				     	</div>
+				    </div>
+					<div class="control-group">
+				     	<!-- Text input-->
+				     	<div class="controls">
+				     	  <button type="submit" class="btn btn-success">Update</button>
+				     	</div>
+				    </div>
+				 	
+				</form>	
+			</div>
 		</div>
-	  </div>
-	</div>
+	</div>		
 
     <script src="public/javascripts/bootstrap.js"></script>
     <script type="text/javascript">
