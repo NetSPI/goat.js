@@ -1,4 +1,5 @@
-var express = require('express')
+var helmet = require('helmet')
+    , express = require('express')
     , routes  = require('./routes')
 	, app = express()
 	, user = require('./routes/user')
@@ -8,6 +9,7 @@ var express = require('express')
 	, passportConfig = require('./config/passport')
 	, home = require('./routes/home')
 	, application = require('./routes/application')
+
 
 
 // Pull in the public directory
@@ -24,7 +26,19 @@ app.set('port', process.env.PORT || 3003)
 app.use(express.urlencoded())
 app.use(express.bodyParser())
 app.use(express.cookieParser() );
-app.use(express.session({ secret: 'goatjsformakebettersecurity' }));
+app.use(express.session({ 
+	secret: 'goatjsformakebettersecurity', 
+	//cookie: {httpOnly: true,  secure: true}
+}));
+app.use(helmet.xframe());  
+app.use(helmet.iexss());  
+app.use(helmet.contentTypeOptions());  
+app.use(helmet.cacheControl());
+app.use(function(req, res, next){
+   res.setHeader("Pragma", "no-cache");
+   res.setHeader("Expires", "0");
+ 	next();
+});
 app.use(passport.initialize());
 app.use(passport.session()); 
 app.use(app.router)
@@ -40,11 +54,12 @@ app.get('/home', application.IsAuthenticated, home.homepage)
 app.get('/account', application.IsAuthenticated, home.account)
 app.post('/account/update', application.IsAuthenticated, user.update)
 app.post('/authenticate',
-	passport.authenticate('local', { 
-			successRedirect: '/home',
-	    	failureRedirect: '/'
-		})
-)
+	passport.authenticate('local', 
+		{ 
+		   successRedirect: '/home',
+		   failureRedirect: '/' 
+		}
+));
 app.get('/logout', application.destroySession)
 app.get('/signup', user.signUp)
 app.post('/register', user.register)
