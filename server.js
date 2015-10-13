@@ -30,10 +30,7 @@ app.use(express.session({
 	secret: 'goatjsformakebettersecurity', 
 	//cookie: {httpOnly: true,  secure: true}
 }));
-app.use(helmet.xframe());  
-app.use(helmet.iexss());  
-app.use(helmet.contentTypeOptions());  
-app.use(helmet.cacheControl());
+app.use(helmet());   
 app.use(function(req, res, next){
    res.setHeader("Pragma", "no-cache");
    res.setHeader("Expires", "0");
