@@ -19,7 +19,7 @@ exports.register = function(req, res){
 
 exports.update = function(req, res) {
 	
-	if (req.body.new_password = req.body.new_password_confirmation){
+	if (req.body.new_password == req.body.new_password_confirmation){
         username = req.body.username
         current_password = req.body.current_password
         isMatch = true
