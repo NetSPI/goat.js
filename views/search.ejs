@@ -59,12 +59,12 @@
                     <li class="hidden-phone"><a href="#" role="button">Settings</a></li>
                     <li id="fat-menu" class="dropdown">
                         <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-user"></i> <%= myVar %>
+                            <i class="icon-user"></i> <%- username %>
                             <i class="icon-caret-down"></i>
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="/account">My Account</a></li>
+                            <li><a tabindex="-1" href="#">My Account</a></li>
                             <li class="divider"></li>
                             <li><a tabindex="-1" class="visible-phone" href="#">Settings</a></li>
                             <li class="divider visible-phone"></li>
@@ -81,26 +81,45 @@
 	<!-- Begin SideBar -->
 	<div id="sidebar-nav">
       <ul id="dashboard-menu" class="nav nav-list">
-          <li class="active "><a href="/home"><i class="icon-home"></i> <span>Dashboard</span></a></li>
+          <li class=" "><a href="home"><i class="icon-home"></i> <span>Dashboard</span></a></li>
           <li class=" "><a href="#"><i class="icon-bar-chart"></i> <span>Reports</span></a></li>
-          <li class=" "><a href="/search"><i class="icon-search"></i> <span>Search</span></a></li>
+          <li class="active"><a href="search"><i class="icon-search"></i> <span>Search</span></a></li>
       </ul>
     </div>
     <!-- End Sidebar-->
+	<div class="content">
+        <div class="container-fluid">
+            <div class="row-fluid">
+				<h2>Search</h2>
+				<form action="/search" method="get" class="form-horizontal">
+					<div class="control-group">
+				     	<!-- Text input-->
+				     	<div class="controls">
+				     	  <input id="q" name="q" type="text" class="input-xlarge" value="<%- q %>">
+				     	</div>
+				    </div>
 
-  	<div class="content">
-      <div class="container-fluid">
-		<div class="span8 main-content">
-        	<div class="row-fluid">
-				<div class="row-fluid">
-		            <h2>Welcome!
-		                <span class="info">This is your dashboard</span>
-		            </h2>
-				</div>
-	      	</div>
+					<div class="control-group">
+				     	<!-- Text input-->
+				     	<div class="controls">
+				     	  <button type="submit" class="btn btn-success">Search</button>
+				     	</div>
+				    </div>
+				</form>	
+			</div>
 		</div>
-	  </div>
-	</div>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<h2>Results</h2>
+				<% users.forEach(function(user) {
+				 %>
+                    <div class="control-group">
+					  User: <%- user.username %>
+					</div>
+                <% }) %>
+			</div>
+		</div>
+	</div>		
 
     <script src="public/javascripts/bootstrap.js"></script>
     <script type="text/javascript">

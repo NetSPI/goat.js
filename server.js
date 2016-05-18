@@ -60,6 +60,7 @@ app.post('/authenticate',
 app.get('/logout', application.destroySession)
 app.get('/signup', user.signUp)
 app.post('/register', user.register)
+app.get('/search', application.IsAuthenticated, home.search)
 
 db
   .sequelize

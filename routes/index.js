@@ -1,4 +1,8 @@
 
 exports.index = function(req, res){
-  	res.render("login.ejs");
+	if (req.body.username) {
+        res.render("login.ejs", { username: req.body.username, } );
+    } else {
+		res.render("login.ejs", { username: "", } );
+	}
 }
