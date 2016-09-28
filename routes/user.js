@@ -1,4 +1,4 @@
-var db = require('../models')
+var db = require('../models');
 
 exports.signUp = function(req, res) {
     res.render("signup.ejs");
@@ -11,33 +11,33 @@ exports.register = function(req, res){
 				console.log(err);
 			});
 		} else {
-			res.redirect('/signup') 
+			res.redirect('/signup');
 		}
-	})
-	res.redirect('/') 
+	});
+	res.redirect('/');
 };
 
 exports.update = function(req, res) {
 	
 	if (req.body.new_password = req.body.new_password_confirmation){
-        username = req.body.username
-        current_password = req.body.current_password
-        isMatch = true
+        username = req.body.username;
+        current_password = req.body.current_password;
+        isMatch = true;
        
         db.User.find({where: {username: username}}).success(function (user){
-            hash = user ? user.password : ''
-            isMatch = db.User.validPassword(current_password, hash, function () { console.log('check password') } , user)
+            hash = user ? user.password : '';
+            isMatch = db.User.validPassword(current_password, hash, function () { console.log('check password'); } , user);
         });
         if (isMatch) {
-            req.user.username = username
-            req.user.password = req.body.new_password
-            req.user.save()
+            req.user.username = username;
+            req.user.password = req.body.new_password;
+            req.user.save();
         } else {
-            console.log('Bad Password')
+            console.log('Bad Password');
         }
 	}
   
-    res.redirect('/account')
+    res.redirect('/account');
 };
 
 /*
